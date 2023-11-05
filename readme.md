@@ -1,4 +1,4 @@
-# ��(SOH Supplementary Private Use Area B U+10FFFE) interpereter
+# ��(SOH Supplementary Private Use Area B U+10FFFE) interpreter
 
 ## Introduction
 
