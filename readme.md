@@ -27,5 +27,10 @@ To run the interpreter using Cargo, execute the following command in the termina
 ```
 cargo run
 ```
+To run all .soh10ffe files in the main directory use
+
+```
+cargo run all
+```
 
 This project's original implementation can be found [here](https://github.com/PlaceReporter99/soh-supplementary-private-use-area-b-u-10fffe).
