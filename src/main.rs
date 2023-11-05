@@ -1,3 +1,4 @@
+#![allow(unused_variables)]
 use std::io::{self, BufRead};
 
 fn bin_list(text: &str, _encoding: &str) -> Vec<i32> {
@@ -103,5 +104,3 @@ fn main() {
         println!("Failed to read the file or the file does not exist.");
     }
 }
-
-
