@@ -88,19 +88,51 @@ fn soh_10fffe(code: &str) -> String {
 }
 
 fn main() {
-    let code: String;
+    let args: Vec<String> = std::env::args().collect();
 
-    println!("input program (with .soh10fffe extension):");
+    if args.len() == 1 {
+        let mut file_path = String::new();
 
-    let mut file_path = String::new();
-    io::stdin().read_line(&mut file_path).expect("Failed to read line");
-    let file_path = file_path.trim(); // Trim any whitespace or newline characters
+        println!("Enter the file name (including the .soh10fffe extension):");
+        std::io::stdin().read_line(&mut file_path).expect("Failed to read line");
 
-    // Read the file and check for the .soh10fffe extension
-    if let Ok(file_content) = std::fs::read_to_string(file_path) {
-        code = file_content;
-        println!("{}", soh_10fffe(&code));
+        let file_path = file_path.trim();
+
+        let file_content = match std::fs::read_to_string(&file_path) {
+            Ok(content) => content,
+            Err(_) => {
+                eprintln!("File not found or cannot be opened.");
+                return;
+            }
+        };
+        let result = soh_10fffe(&file_content);
+        println!("{}", result);
+    } else if args.len() == 2 && args[1] == "all" {
+        let current_dir = std::env::current_dir().expect("Failed to get current directory");
+
+        let mut files: Vec<_> = std::fs::read_dir(current_dir)
+            .expect("Failed to read directory")
+            .filter_map(Result::ok)
+            .map(|dir_entry| dir_entry.path())
+            .filter(|path| {
+                if let Some(extension) = path.extension() {
+                    if let Some(ext) = extension.to_str() {
+                        return ext.to_lowercase() == "soh10fffe";
+                    }
+                }
+                false
+            })
+            .collect();
+
+        files.sort();
+
+        for file in files {
+            let file_content = std::fs::read_to_string(&file).expect("Failed to read file");
+            println!("Running program from file: {}", file.display());
+            let result = soh_10fffe(&file_content);
+            println!("Result:\n{}", result);
+        }
     } else {
-        println!("Failed to read the file or the file does not exist.");
+        eprintln!("Invalid argument. To run all .soh10fffe files, use `cargo run all`. Otherwise, don't include any arguments.");
     }
 }
