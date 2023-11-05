@@ -1,8 +1,8 @@
-# SOH Supplementary Private Use Area B U+10FFFE Programming Language
+# SOH Supplementary Private Use Area B U+10FFFE
 
 ## Introduction
 
-This is an interpreter for a programming language using the SOH character and the Unicode character U+10FFFE. This interpreter processes a language that works with a bit tape containing 50,000 zeroes. It recognizes several commands, each affecting the bit tape's contents.
+This is rust interpreter for a esolang using the SOH character and the Unicode character U+10FFFE. The program starts with a bit tape containing 50,000 zeroes. Here are the different commands (all overwrite the current bit unless otherwise specified):
 
 ## Commands
 
