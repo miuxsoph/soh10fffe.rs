@@ -28,4 +28,4 @@ To run the interpreter using Cargo, execute the following command in the termina
 cargo run
 ```
 
-This project's original implementation can be found [here]```(https://github.com/PlaceReporter99/soh-supplementary-private-use-area-b-u-10fffe).```
+This project's original implementation can be found [here](https://github.com/PlaceReporter99/soh-supplementary-private-use-area-b-u-10fffe).
